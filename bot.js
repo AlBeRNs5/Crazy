@@ -30,7 +30,6 @@ client.user.setGame(`AlBeRNs  `,"https://www.twitch.tv/dggamingbot")
   console.log('')
 });
  
-
  client.on('message', message => {
     const prefix = "*";
       if (message.author.kick) return;
@@ -67,9 +66,6 @@ client.user.setGame(`AlBeRNs  `,"https://www.twitch.tv/dggamingbot")
     }
     });
 
-
-
-
 client.on('message', message => {
     if (message.content.startsWith("<@529322961811800084>"))
     
@@ -80,8 +76,6 @@ client.on('message', message => {
 
 
 });
-
-
 
 client.on('message', msg => {
   if (msg.author.bot) return;
@@ -106,8 +100,6 @@ client.on('message', msg => {
     }
 }
 });
-
-
 
 client.on('message', message => {
     if (message.content.startsWith("invitelink")) {
@@ -140,8 +132,6 @@ client.on('message', message => {
     }
 });
 
-
-
 client.on('message', message => {
     var prefix = "*";
    
@@ -169,10 +159,5 @@ client.on('message', message => {
             return;
         }
     });
-
-
-
-
-
 
 client.login(process.env.BOT_TOKEN);
