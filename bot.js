@@ -1,4 +1,4 @@
-cconst Discord = require('discord.js');
+const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '*'
  
@@ -6,6 +6,7 @@ const prefix = '*'
  
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+client.user.setGame(`AlBeRNs  `,"https://www.twitch.tv/dggamingbot")
   console.log('')
   console.log('')
   console.log('╔[═════════════════════════════════════════════════════════════════]╗')
@@ -70,9 +71,9 @@ client.on('ready', () => {
 
 
 client.on('message', message => {
-    if (message.content.startsWith("<@529791622448152596>"))
+    if (message.content.startsWith("<@529322961811800084>"))
     
-    message.reply("تفضل رابط البوت https://discordapp.com/api/oauth2/authorize?client_id=529791622448152596&permissions=0&scope=bot");
+    message.reply("تفضل رابط البوت https://discordapp.com/oauth2/authorize?client_id=529322961811800084&permissions=0&scope=bot");
     
       
 
