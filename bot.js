@@ -1186,7 +1186,7 @@ const pubg = [
 });
 
 client.on("message",async message => {
-if(message.content === '*shop'){//الامر
+if(message.content === '!shop'){//الامر
 let staff = message.guild.member(message.author).roles.find('name' ,"seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
 var shopc = message.guild.channels.find("name","sales")
