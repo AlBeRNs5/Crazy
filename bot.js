@@ -988,6 +988,7 @@ inviteserver لعمل رابط للسيرفر
 !pubg اسئله ل لعبه ببجي
 !sra7a لعبه صراحه  
 !cutt لعبه كت تويت 
+!shop
 **
  `)
    message.channel.sendEmbed(embed)
@@ -1186,7 +1187,7 @@ const pubg = [
 });
 
 client.on("message",async message => {
-if(message.content === '*shop'){//الامر
+if(message.content === '!shop'){//الامر
 let staff = message.guild.member(message.author).roles.find('name' ,"Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
 var shopc = message.guild.channels.find("name","sales")
@@ -1234,4 +1235,6 @@ ${shop}
            
 }
 });
+
+
 client.login(process.env.BOT_TOKEN);
