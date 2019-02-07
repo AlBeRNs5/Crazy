@@ -1212,7 +1212,7 @@ e.edit("اكتب الدفع عند مين؟").then(e => {
        desc = co.first().content;
         co.first().delete();
 e.edit("Done").then(e => {
-  shopc.send(`@everyone 
+  shopc.send(` 
 ${message.guild.name}:tm: Shop :arrow_down:
 ======================
 ${shop}
@@ -1227,6 +1227,5 @@ ${shop}
   })
            
      
-	
 
 client.login(process.env.BOT_TOKEN);
