@@ -1186,8 +1186,8 @@ const pubg = [
 });
 
 client.on("message",async message => {
-if(message.content === '!shop'){//الامر
-let staff = message.guild.member(message.author).roles.find('name' ,"seller");
+if(message.content === '*shop'){//الامر
+let staff = message.guild.member(message.author).roles.find('name' ,"Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
 var shopc = message.guild.channels.find("name","sales")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
@@ -1219,13 +1219,19 @@ ${shop}
 =================
 **الدفع عند:** **${desc}**
 **تم الارسال بواسطة:** ${message.author}
-@everyone `)
+  @everyone `)
   })
 })
   })
 })
   })
            
+      
+  
      
-
+  
+      
+           
+}
+});
 client.login(process.env.BOT_TOKEN);
