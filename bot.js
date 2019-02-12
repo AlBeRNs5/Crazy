@@ -1289,24 +1289,5 @@ Role : __${ar[message.guild.id].role}__`)
  
 });
 
-client.on("message", message => {
-    if(message.content.startsWith("!verify")) {
-      let num = Math.floor((Math.random() * 4783) + 10);
-    
-      message.channel.send(`يرجاء كتابة الرقم التالي: **${num}**`).then(m => {
-        message.channel.awaitMessages(res => res.content == `${num}`, {
-          max: 1,
-          time: 60000,
-          errors: ['time'],
-        }).then(collected => {
-          message.delete();
-          m.delete();
-          message.member.addRole(message.guild.roles.find(c => c.name == "Verified"));
-        }).catch(() => {
-          m.edit(`You took to long to type the number.\nRe-type the command again if you want to verify yourself.`).then(m2 => m.delete(15000));
-});
-})
-}
-})
 
 client.login(process.env.BOT_TOKEN);
