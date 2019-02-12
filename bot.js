@@ -1258,5 +1258,36 @@ client.on("message", message => {
 }
 });
 
+const rWlc = {}
+client.on('message', message => {//Alpha Codes
+var prefix = "!";//البرفكس //Alpha Codes
+if(message.channel.type === "dm") return;
+if(message.author.bot) return;
+   if(!rWlc[message.guild.id]) rWlc[message.guild.id] = {//Alpha Codes
+    role: "Not Verifed"//Alpha Codes
+  }//Alpha Codes
+const channel = rWlc[message.guild.id].role
+  if (message.content.startsWith(prefix + "autorole")) {//Alpha Codes
+    if(!message.member.hasPermission(`MANAGE_GUILD`)) return;
+    let newrole = message.content.split(' ').slice(1).join(" ")//Alpha Codes
+    if(!newrole) return message.reply(`**${prefix}autorole <rule name>**`)//Alpha Codes
+    rWlc[message.guild.id].role = newrole
+    message.channel.send(`**${message.guild.name}'s rolehas been changed to ${newrole}**`);//Alpha Codes
+  }
+
+
+client.on("guildMemberAdd", member => {
+      if(!rWlc[member.guild.id]) rWlc[member.guild.id] = {
+    role: "Not Verifed"
+  }
+  const Role = rWlc[member.guild.id].role
+    const sRole = rWlc[member.guild.id].role
+    let Rrole = member.guild.roles.find('name', sRole);
+  member.addRole(Rrole);
+ 
+      
+      
+      });
+});
 
 client.login(process.env.BOT_TOKEN);
