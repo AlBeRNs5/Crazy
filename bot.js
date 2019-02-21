@@ -1464,7 +1464,7 @@ client.on('message', message => {
         .addField('+resume', 'تكملة الاغنية')
         .addField('+queue', 'اظهار قائمة التشغيل')
         .addField('+np', 'اظهار الاغنية اللي انت مشغلها حاليا')
-        .setFooter(+help لاظهار الاوامر العامة')
+   .setFooter('+help لاظهار الاوامر العامة')
       message.channel.send(helpEmbed);
     }
 });
