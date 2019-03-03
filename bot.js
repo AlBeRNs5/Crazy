@@ -1546,67 +1546,6 @@ client.on("message", message => {
     }
 }
         });
-        client.on('message', message=>{
-            if(message.content.startsWith("+room1")) {
-            if(!message.channel.guild) return;
-                if(message.author.bot) return;
-                if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
-                message.guild.createChannel("التقديمات", "text").then(c =>{
-                    c.overwritePermissions(message.guild.id, {
-                        SEND_MESSAGES: false
- 
-                          })
-                })
-    message.channel.send("** تم انشاء روم التقديمات بنجاح**")
-            }
-            })
-    client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  let role = message.content.split(" ").slice(2).join(" ");
-  let mySupport = message.guild.roles.find('name',role);
-  if(message.content.startsWith("+acc")) {
-    let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
-    if(!acRoom) return message.reply("!room2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
-    if(acRoom) {
-    if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-    if(!mention) return message.reply('منشن شخص');
-    if(!role) return message.reply('ادخل اسم رتبة');
-    if(!mySupport) return message.reply('هذه الرتبة غير موجودة');
-    if(mention.roles.has(mySupport)) return message.reply('هذا الشخص معه الرتبة مسبقا');
- 
-    mention.addRole(mySupport).then(() => {
-      acRoom.send(`**[ ${mySupport} ] واعطائك رتبة ${mention} تم قبولك بنجاح**`);
-    });
-  }
-}
-});
-client.on('message',async message => {
-  let mention = message.mentions.members.first();
-  if(message.content.startsWith("+de")) {
-  if(!message.channel.guild) return;
-  let acRoom = message.guild.channels.find('name', 'القبول-الرفض');
-  if(!acRoom) return message.reply("!room2 من فضلك انشاء روم **القبول-الرفض** او اكتب الامر");
-  if(!message.guild.member(message.author).hasPermission("MANAGE_ROLES")) return;
-  if(!mention) return message.reply("منشن شخص");
- 
-  acRoom.send(`**${mention} تم رفضك للاسف**`)
-  }
-});
-          client.on('message', message=>{
-            if(message.content.startsWith("+room2")) {
-         if(!message.channel.guild) return;
-                if(message.author.bot) return;
-                if(!message.member.hasPermission('ADMINISTRATOR')) return message.reply("**تحتاج الى `MANAGE_CHANNELS`**");
-                message.guild.createChannel("القبول-الرفض", "text").then(c =>{
-                    c.overwritePermissions(message.guild.id, {
-                        SEND_MESSAGES: false
- 
-                          })
-                })
-    message.channel.send("** تم انشاء روم القبول والرفض بنجاح**")///////dont change
-            }
-})
-
 
 client.login(process.env.BOT_TOKEN);
 
