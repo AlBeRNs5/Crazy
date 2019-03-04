@@ -1753,6 +1753,55 @@ client.on('message', message => {
     }
 });
 
+client.on("message",async message => {
+if(message.content === '+order'){//الامر
+let staff = message.guild.member(message.author).roles.find('name' ,"@everyone");
+      if(!staff) return message.reply(`**Only Sellers | :x:**`)
+var shopc = message.guild.channels.find("name","order")
+  if(!shopc) return message.reply(" انا لم اجد الروم المخصص للوردرات")
+    let shop = '';
+      let fillter = m => m.author.id === message.author.id
+      
+     
+
+      await message.channel.send("اكتب الشئ التي تحتاجه").then(e => {
+           message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
+})
+     .then(co => {
+       shop = co.first().content;
+        co.first().delete();
+     
+let desc = '';
+        
+e.edit("قم بعمل منشن لنفسك او للشخص الذي يحتاج شراء الشئ .").then(e => {
+  message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
+
+     .then(co => {
+       desc = co.first().content;
+        co.first().delete();
+e.edit("Done").then(e => {
+  shopc.send(` 
+${message.guild.name}:tm: Shop :arrow_down:
+======================
+${shop}
+=================
+**الدفع عند:** **${desc}**
+**تم الارسال بواسطة:** ${message.author}
+ `)
+  })
+})
+  })
+})
+  })
+           
+      
+  
+     
+  
+      
+           
+}
+});
 
 
 client.login(process.env.BOT_TOKEN);
