@@ -1119,10 +1119,10 @@ const pubg = [
 });
 
 client.on("message",async message => {
-if(message.content === '+shopOffers'){//الامر
+if(message.content === '+shopoffers'){//الامر
 let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
-var shopc = message.guild.channels.find("name","Offers")
+var shopc = message.guild.channels.find("name","offers")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
     let shop = '';
       let fillter = m => m.author.id === message.author.id
@@ -1287,7 +1287,7 @@ client.on("message",async message => {
 if(message.content === '+shopdiscord'){//الامر
 let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
-var shopc = message.guild.channels.find("name","Discord")
+var shopc = message.guild.channels.find("name","discord")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
     let shop = '';
       let fillter = m => m.author.id === message.author.id
@@ -1339,7 +1339,7 @@ client.on("message",async message => {
 if(message.content === '+shopbots'){//الامر
 let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
-var shopc = message.guild.channels.find("name","Bots")
+var shopc = message.guild.channels.find("name","bots")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
     let shop = '';
       let fillter = m => m.author.id === message.author.id
