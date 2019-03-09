@@ -1858,5 +1858,15 @@ ${shop}
 
 });
 
+client.on("guildMemberAdd", (member) => {
+client.channels.get('554061094063177768').edit({name : •Member ${member.guild.memberCount} •});
+})
+client.on("guildMemberRemove", (member) => {
+client.channels.get('554061094063177768').edit({name : •Member ${member.guild.memberCount} •});
+})
+
+client.on("guildMemberAdd", member => {
+  client.channels.find('id', '553396928402948107').send(`**welcome to Crazy Server : [ ${member} ]**`)
+});
 
 client.login(process.env.BOT_TOKEN);
