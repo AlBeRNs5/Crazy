@@ -1120,7 +1120,7 @@ const pubg = [
 
 client.on("message",async message => {
 if(message.content === '+shopoffers'){//الامر
-let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
+let staff = message.guild.member(message.author).roles.find('name' ,"#,,Crazy Sellerr");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
 var shopc = message.guild.channels.find("name","offers")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
@@ -1129,7 +1129,7 @@ var shopc = message.guild.channels.find("name","offers")
       
      
 
-      await message.channel.send("اكتب الاشياء الذي سوف تبيعها").then(e => {
+      await message.channel.send("اكتب الاشياء الذي سوف تبيعها مع السعر").then(e => {
            message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
 })
      .then(co => {
@@ -1138,7 +1138,7 @@ var shopc = message.guild.channels.find("name","offers")
      
 let desc = '';
         
-e.edit("اكتب الدفع عند مين؟").then(e => {
+e.edit("اعمل منشن ل ال هيدفع له ").then(e => {
   message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
 
      .then(co => {
@@ -1285,7 +1285,7 @@ client.on("message", message => {
 
 client.on("message",async message => {
 if(message.content === '+shopdiscord'){//الامر
-let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
+let staff = message.guild.member(message.author).roles.find('name' ,"#,,Crazy Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
 var shopc = message.guild.channels.find("name","discord")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
@@ -1294,7 +1294,7 @@ var shopc = message.guild.channels.find("name","discord")
       
      
 
-      await message.channel.send("اكتب الاشياء الذي سوف تبيعها").then(e => {
+      await message.channel.send("اكتب الاشياء الذي سوف تبيعها مع السعر").then(e => {
            message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
 })
      .then(co => {
@@ -1303,7 +1303,7 @@ var shopc = message.guild.channels.find("name","discord")
      
 let desc = '';
         
-e.edit("اكتب الدفع عند مين؟").then(e => {
+e.edit("اعمل منشن لنفسك لو انت ال هيشتروا منك ").then(e => {
   message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
 
      .then(co => {
@@ -1337,7 +1337,7 @@ ${shop}
 
 client.on("message",async message => {
 if(message.content === '+shopbots'){//الامر
-let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
+let staff = message.guild.member(message.author).roles.find('name' ,"#,,Crazy Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
 var shopc = message.guild.channels.find("name","bots")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
@@ -1389,7 +1389,7 @@ ${shop}
 
 client.on("message",async message => {
 if(message.content === '+shopacc'){//الامر
-let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
+let staff = message.guild.member(message.author).roles.find('name' ,"#,,Crazy Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
 var shopc = message.guild.channels.find("name","accounts")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
@@ -1398,7 +1398,7 @@ var shopc = message.guild.channels.find("name","accounts")
       
      
 
-      await message.channel.send("اكتب الاشياء الذي سوف تبيعها").then(e => {
+      await message.channel.send("اكتب الاشياء الذي سوف تبيعها مع السعر").then(e => {
            message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
 })
      .then(co => {
@@ -1407,7 +1407,7 @@ var shopc = message.guild.channels.find("name","accounts")
      
 let desc = '';
         
-e.edit("اكتب الدفع عند مين؟").then(e => {
+e.edit("اعمل منشن ل هيدفع له").then(e => {
   message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
 
      .then(co => {
@@ -1438,17 +1438,17 @@ ${shop}
 });
 
 client.on("message",async message => {
-if(message.content === '+shoptags'){//الامر
-let staff = message.guild.member(message.author).roles.find('name' ,"Epic Seller");
+if(message.content === '+shopother'){//الامر
+let staff = message.guild.member(message.author).roles.find('name' ,"#,,Crazy Seller");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
-var shopc = message.guild.channels.find("name","tags")
+var shopc = message.guild.channels.find("name","other")
   if(!shopc) return message.reply("لا اجد الروم المخصص للبيع")
     let shop = '';
       let fillter = m => m.author.id === message.author.id
       
      
 
-      await message.channel.send("اكتب الاشياء الذي سوف تبيعها").then(e => {
+      await message.channel.send("اكتب الاشياء الذي سوف تبيعها مع السعر").then(e => {
            message.channel.awaitMessages(fillter, { time: 60000, max: 1                                    
 })
      .then(co => {
@@ -1457,7 +1457,7 @@ var shopc = message.guild.channels.find("name","tags")
      
 let desc = '';
         
-e.edit("اكتب الدفع عند مين؟").then(e => {
+e.edit("منشن لل هيدفع له ").then(e => {
   message.channel.awaitMessages(fillter, { time: 60000, max: 1 })
 
      .then(co => {
@@ -1757,7 +1757,7 @@ client.on("message",async message => {
 if(message.content === '+order'){//الامر
 let staff = message.guild.member(message.author).roles.find('name' ,"@everyone");
       if(!staff) return message.reply(`**Only Sellers | :x:**`)
-var shopc = message.guild.channels.find("name","order")
+var shopc = message.guild.channels.find("name","orders")
   if(!shopc) return message.reply(" انا لم اجد الروم المخصص للوردرات")
     let shop = '';
       let fillter = m => m.author.id === message.author.id
@@ -1786,8 +1786,8 @@ ${message.guild.name}:tm: Shop :arrow_down:
 ${shop}
 =================
 **الدفع عند:** **${desc}**
-**تم الارسال بواسطة:** ${message.author}
- `)
+**تم الارسال بواسطة:** ${message.author} 
+@everyone - هناك طلب جديد يرجي التكلم معه . `)
   })
 })
   })
