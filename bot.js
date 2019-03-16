@@ -1973,7 +1973,7 @@ if(!message.channel.guild) return message.reply(' ');
  
           collected.first().delete();
  
-          submite.send(`@- One
+          submite.send(`@everyone - ارقاله حد يشوف هنا .. 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 **[ ${message.guild.name}:arrow_down: ] Submit**
  
@@ -1989,7 +1989,7 @@ ${boi2}
 [**اسم الشاري بمنشنة**]:
 ${message.author}
  
-[**ايد�� الشاري**]:
+[**ايدي الشاري **]:
 ${message.author.id}`);
  
         }
