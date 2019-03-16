@@ -1859,4 +1859,349 @@ ${shop}
 });
 
 
+client.on('message', message => {
+    if (message.content.startsWith(prefix + 'sug')) {
+        if (message.author.bot) return
+        if (!message.guild) return message.reply('**:x: This Commands Just In Server**').then(v => {v.react('❌')})
+        var args =  message.content.split(' ').slice(1).join(' ')
+        if (!args) return message.reply('Type You Suggestion').then(c => {c.delete(5000)})
+        let Room = message.guild.channels.find(`name`, "suggestions")
+        if (!Room) return message.channel.send("Can't find suggestions channel.").then(d => d.react('❌'))
+        let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setAuthor(`Vote on ${message.author.username}'s suggestion`, message.author.avatarURL)
+       .addField('**Suggestion**',`${args}`)
+       .setThumbnail(message.author.avatarURL)
+       .setFooter(`ID: ${message.author.id}`)
+       Room.sendEmbed(embed).then(c => {
+           c.react('✅').then(() => 
+               c.react('❌'))
+           
+       }).catch(e => console.error(e)
+       )
+   }
+});
+
+var guilds = {};
+client.on('message',async message => {
+ var prefix = '*';//البرفكس
+  if(message.content.startsWith(prefix + "buy")) {
+ 
+if(!message.channel.guild) return message.reply(' ');
+ 
+ 
+  let submite = message.guild.channels.find(`name`, "سم روم الي توصل اليه ليبون يشترون رتبة");
+ 
+  if(!submite) return message.channel.send("لايوجد روم خاص للي يوصل الشراء اليه :x:");
+  let filter = m => m.author.id === message.author.id;
+ 
+    let thisMessage;
+ 
+    let thisFalse;
+ 
+    message.channel.send('**ما تشتري ؟**').then(msg => {
+ 
+ 
+ 
+    message.channel.awaitMessages(filter, {
+ 
+      max: 1,
+ 
+      time: 90000,
+ 
+      errors: ['time']
+ 
+    })
+ 
+    .then(collected => {
+ 
+      collected.first().delete();
+ 
+      thisMessage = collected.first().content;
+ 
+      let boi;
+ 
+      msg.edit('**الرجاء كتابة اسمك**').then(msg => {
+ 
+ 
+ 
+          message.channel.awaitMessages(filter, {
+ 
+            max: 1,
+ 
+            time: 90000,
+ 
+            errors: ['time']
+ 
+          })
+ 
+          .then(collected => {
+ 
+            collected.first().delete();
+ 
+            boi = collected.first().content;
+ 
+            let boi2;
+ 
+            msg.edit('** يرجي ارسال الكريدت المطلوب الي احد من اداره @- One امامك 30 ثانيه . **').then(msg => {
+ 
+ 
+ 
+              message.channel.awaitMessages(filter, {
+ 
+                max: 1,
+ 
+                time: 300000,
+ 
+                errors: ['time']
+ 
+              })
+ 
+              .then(collected => {
+ 
+                collected.first().delete();
+ 
+              boi2 = collected.first().content;
+ 
+      msg.edit('**هل متاكد من شرائك الرتبة اخي الكريم الرجاء الاجابة ب نعم او لا**');
+ 
+ message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
+ 
+        max: 1,
+ 
+        time: 90000,
+ 
+        errors: ['time']
+ 
+      })
+ 
+      .then(collected => {
+ 
+        if(collected.first().content === 'لا') {
+ 
+          msg.delete();
+ 
+          message.delete();
+ 
+          thisFalse = false;
+ 
+        }
+ 
+        if(collected.first().content === 'نعم') {
+ 
+          if(thisFalse === false) return;
+ 
+          msg.edit('**Done ✅, تم بنجاح شراء الرتبة الرجاء الانتظار حين الادارة ترد عليك**');
+ 
+          collected.first().delete();
+ 
+          submite.send(`@- One
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+**[ ${message.guild.name}:arrow_down: ] Submit**
+ 
+[**هل يريد شراء الرتبة او كهدية**]:
+${thisMessage}
+ 
+[**اسم الذي يريد شراء الرتبة**]:
+${boi}
+ 
+[**هل تم التحويل ام لا**]:
+${boi2}
+ 
+[**اسم الشاري بمنشنة**]:
+${message.author}
+ 
+[**ايد�� الشاري**]:
+${message.author.id}`);
+ 
+        }
+ 
+      }
+ 
+  );
+ 
+});
+ 
+    });
+ 
+  }
+ 
+    );
+ 
+  });
+ 
+}
+ 
+);
+ 
+    })}});
+
+module.exports = (client, message, new_message, player1_id, player2_id, turn_id, symbol, symbols, grid_message) => {
+
+  var score = [
+    [null, null, null],
+    [null, null, null],
+    [null, null, null]
+  ];
+  var will_end_game = false;
+
+  client.on('messageReactionAdd', (reaction, user) => {
+    if (reaction.message.id == new_message.id && turn_id == user.id && !will_end_game) {
+
+      let emoji;
+      // Convert emoji identifier to :emoji: format
+      switch(reaction.emoji.identifier) {
+        case '1%E2%83%A3':
+          emoji = ':one:';
+          if (score[0][0] == null) score[0][0] = symbol;
+          break;
+        case '2%E2%83%A3':
+          emoji = ':two:';
+          if (score[0][1] == null) score[0][1] = symbol;
+          break;
+        case '3%E2%83%A3':
+          emoji = ':three:';
+          if (score[0][2] == null) score[0][2] = symbol;
+          break;
+        case '4%E2%83%A3':
+          emoji = ':four:';
+          if (score[1][0] == null) score[1][0] = symbol;
+          break;
+        case '5%E2%83%A3':
+          emoji = ':five:';
+          if (score[1][1] == null) score[1][1] = symbol;
+          break;
+        case '6%E2%83%A3':
+          emoji = ':six:';
+          if (score[1][2] == null) score[1][2] = symbol;
+          break;
+        case '7%E2%83%A3':
+          emoji = ':seven:';
+          if (score[2][0] == null) score[2][0] = symbol;
+          break;
+        case '8%E2%83%A3':
+          emoji = ':eight:';
+          if (score[2][1] == null) score[2][1] = symbol;
+          break;
+        case '9%E2%83%A3':
+          emoji = ':nine:';
+          if (score[2][2] == null) score[2][2] = symbol;
+          break;
+        default:
+          break;
+      }
+
+      // Replace number tile with O or X (checks if it exists first)
+      if (grid_message.content.indexOf(emoji) == -1) {
+        return;
+      }
+      grid_message.edit(grid_message.content.replace(emoji, symbol))
+      .then((new_mes) => {
+        grid_message = new_mes;
+        console.log("Successful # tile to symbol switch");
+      })
+      .catch(console.error);
+
+      // Check if the game has concluded
+      if (didPlayerWin(symbols[0], player1_id) || didPlayerWin(symbols[1], player2_id) || didItTie()) {
+        will_end_game = true;
+        return;
+      }
+
+      // Replace player with the next and symbol with the next
+      let temp_message = new_message.content.replace(`<@${turn_id}>`, `<@${toggle_player(turn_id, player1_id, player2_id)}>`);
+      temp_message = temp_message.replace(symbol, toggle_symbol(symbol));
+      new_message.edit(temp_message)
+      .then(console.log("Successful turn switch"))
+      .catch(console.error);
+
+      // Toggle symbols between O and X and players 1 and 2
+      symbol = toggle_symbol(symbol);
+      turn_id = toggle_player(turn_id, player1_id, player2_id);
+    }
+  })
+
+
+  // Function for toggling players
+  function toggle_player(turn_id, player1_id, player2_id) {
+    let player_switched;
+    if (turn_id == player1_id) {
+      player_switched = player2_id;
+    }
+    else {
+      player_switched = player1_id;
+    }
+    return player_switched;
+  }
+
+  // Function for toggling symbols
+  function toggle_symbol(symbol) {
+    return symbols[Math.abs(symbols.findIndex((sym) => {
+      return sym == symbol;
+    }) - 1)];
+  }
+
+  // Function for checking if a player won
+  function didPlayerWin(sym, player) {
+    for (let i = 0; i < score.length; i++) {
+      // Horizontal checks
+      if (score[i][0] == sym &&
+          score[i][1] == sym &&
+          score[i][2] == sym) {
+            new_message.edit(`مبروك! <@${player}> فزت!`)
+            .then(console.log('Successful win'))
+            .catch(console.error);
+            return true;
+      }
+      // Vertical checks
+      else if (score[0][i] == sym &&
+               score[1][i] == sym &&
+               score[2][i] == sym) {
+               new_message.edit(`مبروك! <@${player}> فزت!`)
+               .then(console.log('Successful win'))
+               .catch(console.error);
+               return true;
+      }
+    }
+    // Diagonal checks
+    if (score[0][0] == sym &&
+        score[1][1] == sym &&
+        score[2][2] == sym) {
+          new_message.edit(`مبروك! <@${player}> فزت!`)
+          .then(console.log('Successful win'))
+          .catch(console.error);
+          return true;
+    }
+    else if (score[0][2] == sym &&
+             score[1][1] == sym &&
+             score[2][0] == sym) {
+               new_message.edit(`مبروك! <@${player}> فزت!`)
+               .then(console.log('Successful win'))
+               .catch(console.error);
+               return true;
+    }
+
+    return false;
+  }
+
+  // Function for checking if it's a tie
+  function didItTie() {
+    let null_counter = 0;
+    for (let i = 0; i < score.length; i++) {
+      for (let j = 0; j < score.length; j++) {
+        if (score[i][j] == null) {
+          null_counter++;
+        }
+      }
+    }
+    if (null_counter == 0) {
+      new_message.edit('تعادل يرقاله . ')
+      .then(console.log('Successful tie'))
+      .catch(console.error);
+      return true;
+    }
+  }
+}
+
+
 client.login(process.env.BOT_TOKEN);
