@@ -76,7 +76,7 @@ client.user.setGame(` Crazy ! `,"https://www.twitch.tv/dggamingbot")
 
 
 client.on('message', message => {
-    if (message.content.startsWith("inviteserver")) {
+    if (message.content.startsWith("رابط")) {
  
   message.channel.createInvite({
         thing: true,
