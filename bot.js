@@ -7,27 +7,13 @@ const prefix = '+'
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 client.user.setGame(` Crazy ! `,"https://www.twitch.tv/dggamingbot")
-  console.log('')
-  console.log('')
-  console.log('╔[═════════════════════════════════════════════════════════════════]╗')
   console.log(`[Start] ${new Date()}`);
-  console.log('╚[═════════════════════════════════════════════════════════════════]╝')
-  console.log('')
-  console.log('╔[════════════════════════════════════]╗');
   console.log(`Logged in as * [ " ${client.user.username} " ]`);
-  console.log('')
   console.log('Informations :')
-  console.log('')
   console.log(`servers! [ " ${client.guilds.size} " ]`);
   console.log(`Users! [ " ${client.users.size} " ]`);
   console.log(`channels! [ " ${client.channels.size} " ]`);
-  console.log('╚[════════════════════════════════════]╝')
-  console.log('')
-  console.log('╔[════════════]╗')
   console.log(' Bot Is Online')
-  console.log('╚[════════════]╝')
-  console.log('')
-  console.log('')
 });
  
 
@@ -413,7 +399,6 @@ client.on('message', msg => {
   if(msg.content === '+unhide') {
     msg.guild.channels.forEach(c => {
       c.overwritePermissions(msg.guild.id, {
-        SEND_MESSAGES: true,
         READ_MESSAGES: true
       })
     })
@@ -1168,19 +1153,6 @@ const channel = rWlc[message.guild.id].role
   }
 
 
-client.on("guildMemberAdd", member => {
-      if(!rWlc[member.guild.id]) rWlc[member.guild.id] = {
-    role: "Not Verifed"
-  }
-  const Role = rWlc[member.guild.id].role
-    const sRole = rWlc[member.guild.id].role
-    let Rrole = member.guild.roles.find('name', sRole);
-  member.addRole(Rrole);
- 
-      
-      
-      });
-});
 
 
 client.on("message", message => {
@@ -1868,7 +1840,7 @@ client.on('message',async message => {
 if(!message.channel.guild) return message.reply(' ');
  
  
-  let submite = message.guild.channels.find(`name`, "buy-role");
+  let submite = message.guild.channels.find(`name`, "buy");
  
   if(!submite) return message.channel.send("لايوجد روم خاص للي يوصل الشراء اليه :x:");
   let filter = m => m.author.id === message.author.id;
@@ -1899,7 +1871,7 @@ if(!message.channel.guild) return message.reply(' ');
  
       let boi;
  
-      msg.edit('**الرجاء كتابة اسمك**').then(msg => {
+      msg.edit('**منشن لنفسك**').then(msg => {
  
  
  
@@ -1921,7 +1893,7 @@ if(!message.channel.guild) return message.reply(' ');
  
             let boi2;
  
-            msg.edit('** يرجي ارسال الكريدت المطلوب الي احد من اداره @- One امامك 30 ثانيه . **').then(msg => {
+            msg.edit('**كم معك من كريدت في برو بوت**').then(msg => {
  
  
  
@@ -1941,7 +1913,7 @@ if(!message.channel.guild) return message.reply(' ');
  
               boi2 = collected.first().content;
  
-      msg.edit('**هل متاكد من شرائك الرتبة اخي الكريم الرجاء الاجابة ب نعم او لا**');
+      msg.edit('**هل متأكد من ارسالك لطلبك .؟ يرجي كتابه نعم او لا **');
  
  message.channel.awaitMessages(response => response.content === 'نعم' || 'لا' && filter,{
  
@@ -1969,7 +1941,7 @@ if(!message.channel.guild) return message.reply(' ');
  
           if(thisFalse === false) return;
  
-          msg.edit('**Done ✅, تم بنجاح شراء الرتبة الرجاء الانتظار حين الادارة ترد عليك**');
+          msg.edit('**Done ✅, تم بنجاح للارسال للادراه نتمني انت تنتظر معنا .**');
  
           collected.first().delete();
  
@@ -1977,13 +1949,13 @@ if(!message.channel.guild) return message.reply(' ');
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 **[ ${message.guild.name}:arrow_down: ] Submit**
  
-[**هل يريد شراء الرتبة او كهدية**]:
+[**ما الذي يريد شراءه**]:
 ${thisMessage}
  
-[**اسم الذي يريد شراء الرتبة**]:
+[**اسم المشتري**]:
 ${boi}
  
-[**هل تم التحويل ام لا**]:
+[**كم معه كريدت .؟**]:
 ${boi2}
  
 [**اسم الشاري بمنشنة**]:
@@ -2077,82 +2049,7 @@ client.on('message' , message => {
 }
  });  
 
-let emojiss = require("node-emoji");
-client.on("message", msg=>{
-if(msg.content.startsWith(`${prefix}setrole`)){
-if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.reply("you don't have permission").then(s => {s.delete(1600);})
-msg.reply("منشن الروم الي تبي فيه التفعيل").then(msgs=>{
-  const filter = response => response.author.id === msg.author.id;
-  msg.channel.awaitMessages(filter, { maxMatches: 1, time: 30000, errors: ['time'] })
-  .then( collected =>{
-    msg.delete();
-    let idC = msg.guild.channels.find(c=>c.id == collected.first().mentions.channels.first().id)
-    if(!idC) return msgs.edit("لم اجد الروم");
-     idC = idC.id;
-     msgs.edit(`${msg.author}, ادخل الايموجي الذي تريدة للتفعيل`)
-const filter = response => response.author.id === msg.author.id;
-msg.channel.awaitMessages(filter, { maxMatches: 1, time: 30000, errors: ['time'] })
-.then( collected =>{
-if(!emojiss.hasEmoji(collected.first().mentions._content)) return msgs.edit("ادخل ايموجي صحيح !");
-newemoji = collected.first().mentions._content;
-msg.delete();
-msgs.edit(`${msg.author}, منشن للرتبة الذي تريدها`)
-const filter = response => response.author.id === msg.author.id;
-msg.channel.awaitMessages(filter, { maxMatches: 1, time: 30000, errors: ['time'] })
-.then( collected =>{
-let roleW = collected.first().mentions.roles.first()
-if(!roleW) {
-  let embed = new Discord.RichEmbed()
-  .setColor("#42f4f4")
-  .setTitle(`:x: - منشن الرتبة `);
-  msg.reply(embed).then( z => z.delete(3000)); return
-};
-let role = msg.guild.roles.find(`name`, roleW.name);
-if(!role) {
-  let embed = new Discord.RichEmbed()
-  .setColor("#42f4f4")
-  .setTitle(`:x: - Could't find \`${roleW.name}\` role.`);
-msg.reply(embed).then( msgs => msgs.delete(3000));
-return
-}
-roleNew = role;
-msgs.edit(`${msg.author}, ادخل النص الذي تريدة`)
-const filter = response => response.author.id === msg.author.id;
-msg.channel.awaitMessages(filter, { maxMatches: 1, time: 30000, errors: ['time'] })
-.then( collected =>{
-stringNew = collected.first().mentions._content;
-let channel = msg.guild.channels.get(idC);
-if(!channel) {
-  let embed = new Discord.RichEmbed()
-  .setColor("#42f4f4")
-  .setTitle(`:x: - Could't find \`${idC}\` Channel.`);
-msg.reply(embed).then( msgs => msgs.delete(3000));
-return
-}
-channel.bulkDelete(100)
-channel.send(`@everyone
-${msg.guild.name}© :arrow_down:
- 
-${stringNew}
-`).then( msgA =>{
-msgA.react(newemoji).then(()=>{
-  const Ac = (reaction, user) => reaction.emoji.name === newemoji && !user.bot;
-  const Acc = msgA.createReactionCollector(Ac, {time: 120000});
-  Acc.on("collect", r=>{
-  let member = msg.guild.members.get(r.users.last().id);
-  if(!member) return;
-  r.remove(member.user);
-if(member.roles.find(r=>r.name == roleNew.name)) return;
-    member.addRole(roleNew);
-  channel.send(`${member.user}, تم تفعيلك`).then(z => z.delete(1500));
-})})})
-}).catch(e => {console.log(e.message)});  
-}).catch(e => {console.log(e.message)});
-}).catch(e => {console.log(e.message)});
-}).catch(e => {console.log(e.message)});
-})
 
-}});
 
 
 client.login(process.env.BOT_TOKEN);
